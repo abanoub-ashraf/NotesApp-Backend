@@ -15,12 +15,12 @@ const router = express.Router()
  */
 router.post('/create', createNote)
 
-// /**
-//  * @method DELETE
-//  * @router /notes/delete/noteId
-//  * @description delete a note
-//  */
-// router.delete('/delete/:noteId', deleteNote)
+/**
+ * @method DELETE
+ * @router /notes/delete/noteId
+ * @description delete a note
+ */
+router.delete('/delete/:noteId', deleteNote)
 
 // /**
 //  * @method PATCH

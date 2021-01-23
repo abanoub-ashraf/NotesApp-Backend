@@ -40,18 +40,18 @@ export const fetchNotes = (req, res) => {
         })
 }
 
-// export const deleteNote = (req, res) => {
-//     const noteId = req.params.noteId
-//     NoteModel.findOneAndRemove({ _id: noteId })
-//         .then(_result => {
-//             console.log(colors.white('Note is Deleted!'))
-//             res.status(204).send('Note is Deleted!')
-//         })
-//         .catch(error => {
-//             console.log(colors.red(error).underline)
-//             res.status(500).send('Couldn\'t Delete the Note!')
-//         })
-// }
+export const deleteNote = (req, res) => {
+    const noteId = req.params.noteId
+    NoteModel.findOneAndRemove({ _id: noteId })
+        .then(_result => {
+            console.log(colors.white('Note is Deleted!'))
+            res.status(204).send('Note is Deleted!')
+        })
+        .catch(error => {
+            console.log(colors.red(error).underline)
+            res.status(500).send('Couldn\'t Delete the Note!')
+        })
+}
 
 // export const updateNote = (req, res) => {}
 
