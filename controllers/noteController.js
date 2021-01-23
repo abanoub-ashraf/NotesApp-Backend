@@ -53,7 +53,24 @@ export const deleteNote = (req, res) => {
         })
 }
 
-// export const updateNote = (req, res) => {}
+export const updateNote = (req, res) => {
+    const noteId = req.params.noteId
+    const { title, note } = req.body
+    NoteModel.findOneAndUpdate({ _id: noteId }, {
+        title: title,
+        date: new Date(),
+        note: note
+    })
+        .then(_result => {
+            console.log(colors.black('Note is Updated!'))
+            res.status(204).send('Note is Updated!')
+        })
+        .catch(error => {
+            console.log(colors.red(error).underline)
+            res.status(500).send('Couldn\'t update the Note!')
+        })
+        
+}
 
 export default {
     createNote, 

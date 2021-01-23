@@ -22,12 +22,12 @@ router.post('/create', createNote)
  */
 router.delete('/delete/:noteId', deleteNote)
 
-// /**
-//  * @method PATCH
-//  * @router /notes/update/noteId
-//  * @description update a note
-//  */
-// router.patch('/update/:noteId', updateNote)
+/**
+ * @method PATCH
+ * @router /notes/update/noteId
+ * @description update a note
+ */
+router.patch('/update/:noteId', updateNote)
 
 /**
  * @method GET
