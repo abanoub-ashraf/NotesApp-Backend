@@ -1,6 +1,22 @@
-const express = require('express')
-const colors = require('colors')
+import express from 'express'
+import cors from 'cors'
+import { config } from 'dotenv'
+import connectToDB from './config/dbConfig.js'
+import colors from 'colors'
 
 const app = express()
 
-app.listen(3000, () => console.log(colors.blue('Server is up and running on port 3000...').underline))
+config({ path: './config/.env' })
+
+app.use(cors())
+
+connectToDB()
+    .then(result => {
+        app.listen(process.env.PORT, () => {
+            console.log(colors.blue(`Server is up and running on port ${process.env.PORT}...`).underline)
+            console.log(colors.magenta('MongoDB is Connected!').underline)
+        })
+    })
+    .catch(error => {
+        console.log(error)
+    })
