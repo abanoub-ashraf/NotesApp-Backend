@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import { config } from 'dotenv'
 import connectToDB from './config/dbConfig.js'
-import router from './routes/noteRoute.js'
+import noteRoute from './routes/noteRoute.js'
 import colors from 'colors'
 
 const app = express()
@@ -10,8 +10,9 @@ const app = express()
 config({ path: './config/.env' })
 
 app.use(cors())
+app.use(express.json())
 
-app.use('/notes', router)
+app.use('/notes', noteRoute)
 
 app.use('/', (_req, res, next) => {
     res.status(200).json({
@@ -28,5 +29,5 @@ connectToDB()
         })
     })
     .catch(error => {
-        console.log(error)
+        console.log(colors.red(error).underline)
     })
